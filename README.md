@@ -1,6 +1,6 @@
 # Alg
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
+Projeto temporário. Privarei em breve.
 
 ## Development server
 
