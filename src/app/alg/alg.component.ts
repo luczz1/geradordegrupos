@@ -14,12 +14,15 @@ export class AlgComponent implements OnInit {
   vezesGerado: number = 0
   grupo1Wins: number = 0
   grupo2Wins: number = 0
+  loading: boolean = false
+  loadingRes: boolean = false
 
   constructor() {}
 
   ngOnInit(): void {}
 
   randomizeGroups() {
+    this.loading = true
     this.resetAll()
 
     while (this.numeros.length < 4) {
@@ -42,6 +45,7 @@ export class AlgComponent implements OnInit {
     }
 
     setTimeout(() => {
+      this.loading = false
       this.grupo1.push(this.nomes[this.numeros[0]], this.nomes[this.numeros[1]]);
     }, 3000)
     setTimeout(() => {
@@ -52,7 +56,9 @@ export class AlgComponent implements OnInit {
 
   firstGroupToEat() {
     this.primeiroGrupo = ''
+    this.loadingRes = true
     setTimeout(() => {
+      this.loadingRes = false
       this.vezesGerado++
       let num = Math.trunc(Math.random() * 2);
       let grupos = ['Grupo 1', 'Grupo 2']

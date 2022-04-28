@@ -12,6 +12,8 @@
 
   </div>
 
+  <div *ngIf="vezesGerado > 0" class="text-muted">Vezes geradas: {{vezesGerado}}</div>
+
   <div class="form-group text-light">
     <input class="pForm bg-dark text-light" type="text" [(ngModel)]="nomes[0]">
     <input class="pForm bg-dark text-light" type="text" [(ngModel)]="nomes[1]">
@@ -19,13 +21,19 @@
     <input class="pForm bg-dark text-light" type="text" [(ngModel)]="nomes[3]">
   </div>
 
-  <div class="text-muted">Vezes geradas: {{vezesGerado}}</div>
+
+
+  <div *ngIf="loading == true">
+    <div class="lds-ring" ><div></div><div></div><div></div><div></div></div>
+    <div class="text-light">Gerando grupos..</div>
+  </div>
+
 
   <div *ngIf="grupo1.length == 2">
     <div class="card border-light text-light">
       <div class="card-body">
         <h5 class="card-title">Grupo 1</h5>
-        <p class="card-text">{{grupo1}}</p>
+        <p class="card-text">{{grupo1[0]}} e {{grupo1[1]}}</p>
 
       </div>
       <div class="text-muted" *ngIf="grupo1Wins > 0">Wins: {{grupo1Wins}}</div>
@@ -36,23 +44,30 @@
   <div class="card border-light text-light">
     <div class="card-body">
       <h5 class="card-title">Grupo 2 </h5>
-      <p class="card-text">{{grupo2}}</p>
+      <p class="card-text">{{grupo2[0]}} e {{grupo2[1]}}</p>
     </div>
     <div class="text-muted" *ngIf="grupo2Wins > 0">Wins: {{grupo2Wins}}</div>
   </div>
 </div>
 
+<div *ngIf="loadingRes == true">
+  <div class="lds-facebook"><div></div><div></div><div></div></div>
+  <div class="text-light">Calculando vencedor...</div>
+</div>
+
+
 <div *ngIf="primeiroGrupo != ''" class="text-light">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <p class="lead">O primeiro grupo a comer será:</p>
+      <p class="lead mt-3">E o grupo vencedor é: </p>
       <h3 class="display-4">{{primeiroGrupo}}</h3>
-      <button type="button" class="btn btn-dark" (click)="firstGroupToEat()">Gerar</button>
+      <button type="button" class="btn btn-dark" (click)="firstGroupToEat()">Gerar novamente</button>
+
     </div>
   </div>
 </div>
 
-<hr class="mb-3">
+
 
 
 
