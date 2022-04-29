@@ -189,6 +189,7 @@ input.ng-invalid.ng-dirty {
   display: inline-block;
   position: relative;
   width: 80px;
+  background: #1b1c1d;
   height: 80px;
 }
 .lds-facebook div {
