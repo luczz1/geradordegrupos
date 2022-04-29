@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-alg',
@@ -6,52 +7,74 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alg.component.css'],
 })
 export class AlgComponent implements OnInit {
+
+  //grupos
   grupo1: string[] = [];
   grupo2: string[] = [];
+
+  //form
   nomes: string[] = ['Participante 1', 'Participante 2', 'Participante 3', 'Participante 4'];
+  formNomes = new FormGroup({
+    "n1": new FormControl(),
+    "n2": new FormControl(),
+    "n3": new FormControl(),
+    "n4": new FormControl()
+  })
   numeros: number[] = [];
   primeiroGrupo: string = ''
   vezesGerado: number = 0
+
+  //wins
   grupo1Wins: number = 0
   grupo2Wins: number = 0
+
+  //loading
   loading: boolean = false
   loadingRes: boolean = false
+
 
   constructor() {}
 
   ngOnInit(): void {}
 
   randomizeGroups() {
-    this.loading = true
-    this.resetAll()
+    if(this.formNomes.valid) {
+      this.loading = true
+      this.resetAll()
 
-    while (this.numeros.length < 4) {
-      let num = Math.trunc(Math.random() * 4);
+      while (this.numeros.length < 4) {
+        let num = Math.trunc(Math.random() * 4);
 
-      if (this.numeros.includes(num)) {
-        this.numeros.splice(num);
-        let num2 = Math.trunc(Math.random() * 4);
+        if (this.numeros.includes(num)) {
+          this.numeros.splice(num);
+          let num2 = Math.trunc(Math.random() * 4);
 
-        while (num2 == num) {
-          num2 = Math.trunc(Math.random() * 4);
+          while (num2 == num) {
+            num2 = Math.trunc(Math.random() * 4);
+          }
+          if (!this.numeros.includes(num2)) {
+            this.numeros.push(num2);
+          }
         }
-        if (!this.numeros.includes(num2)) {
-          this.numeros.push(num2);
+        if (!this.numeros.includes(num)) {
+          this.numeros.push(num);
         }
       }
-      if (!this.numeros.includes(num)) {
-        this.numeros.push(num);
-      }
-    }
 
-    setTimeout(() => {
-      this.loading = false
-      this.grupo1.push(this.nomes[this.numeros[0]], this.nomes[this.numeros[1]]);
-    }, 3000)
-    setTimeout(() => {
-      this.grupo2.push(this.nomes[this.numeros[2]], this.nomes[this.numeros[3]]);
-      this.firstGroupToEat()
-    }, 4000)
+      setTimeout(() => {
+        this.loading = false
+        this.grupo1.push(this.nomes[this.numeros[0]], this.nomes[this.numeros[1]]);
+      }, 3000)
+      setTimeout(() => {
+        this.grupo2.push(this.nomes[this.numeros[2]], this.nomes[this.numeros[3]]);
+        this.firstGroupToEat()
+      }, 4000)
+      } else {
+        this.formNomes.get('n1').markAsDirty()
+        this.formNomes.get('n2').markAsDirty()
+        this.formNomes.get('n3').markAsDirty()
+        this.formNomes.get('n4').markAsDirty()
+      }
   }
 
   firstGroupToEat() {
