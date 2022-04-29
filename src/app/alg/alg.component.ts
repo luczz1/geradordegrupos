@@ -23,6 +23,7 @@ export class AlgComponent implements OnInit {
   numeros: number[] = [];
   primeiroGrupo: string = ''
   vezesGerado: number = 0
+  formDisabled: boolean = false
 
   //wins
   grupo1Wins: number = 0
@@ -39,6 +40,7 @@ export class AlgComponent implements OnInit {
 
   randomizeGroups() {
     if(this.formNomes.valid) {
+      this.formDisabled = true
       this.loading = true
       this.resetAll()
 
@@ -68,6 +70,7 @@ export class AlgComponent implements OnInit {
       setTimeout(() => {
         this.grupo2.push(this.nomes[this.numeros[2]], this.nomes[this.numeros[3]]);
         this.firstGroupToEat()
+        this.formDisabled = false
       }, 4000)
       } else {
         this.formNomes.get('n1').markAsDirty()
