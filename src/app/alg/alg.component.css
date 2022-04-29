@@ -25,6 +25,10 @@ background: #1b1c1d;
   text-align: center;
 }
 
+.container {
+  background: #1b1c1d;
+}
+
 .btn {
   width: 12rem;
   margin-top: 30px;
