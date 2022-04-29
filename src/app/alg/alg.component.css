@@ -88,7 +88,9 @@ input.ng-invalid.ng-dirty {
       margin: auto;
       text-align: center;
     }
-
+    .lds-facebook {
+   display: none;   
+  }
 
 }
 
@@ -186,7 +188,7 @@ input.ng-invalid.ng-dirty {
 
 /* carregamento 2 */
 .lds-facebook {
-  display: inline;
+  display: inline-block;
   position: relative;
   width: 80px;
   background: #1b1c1d;
