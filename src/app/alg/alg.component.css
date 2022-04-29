@@ -89,7 +89,10 @@ input.ng-invalid.ng-dirty {
       text-align: center;
     }
     .lds-facebook {
-   display: none;   
+    display: none;   
+  }
+    .lds-facebook div {
+    display: none;   
   }
 
 }
