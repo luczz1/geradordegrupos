@@ -10,6 +10,7 @@
           type="button"
           class="btn2 btn-success"
           (click)="randomizeGroups()"
+          [attr.disabled]="formDisabled ? true : null"
         >
           Gerar grupos
         </button>
