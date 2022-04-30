@@ -39,7 +39,6 @@ export class AlgComponent implements OnInit {
   ngOnInit(): void {}
 
   randomizeGroups() {
-    this.firstGroupToEat()
     if(this.formNomes.valid) {
       this.formDisabled = true
       this.loading = true
@@ -82,22 +81,22 @@ export class AlgComponent implements OnInit {
   }
 
   firstGroupToEat() {
-    if (this.grupo1.length == 2 && this.grupo2.length == 2) {
-       this.primeiroGrupo = ''
-      this.loadingRes = true
-      setTimeout(() => {
-        this.loadingRes = false
-        this.vezesGerado++
-        let num = Math.trunc(Math.random() * 2);
-        let grupos = ['Grupo 1', 'Grupo 2']
-        this.primeiroGrupo = grupos[num]
-        if(this.primeiroGrupo == 'Grupo 1') {
-          this.grupo1Wins++
-        } else {
-          this.grupo2Wins++
-        }
-      }, 2000)
+    this.primeiroGrupo = ''
+    this.loadingRes = true
+    this.formDisabled = true
+    setTimeout(() => {
+      this.loadingRes = false
+      this.vezesGerado++
+      let num = Math.trunc(Math.random() * 2);
+      let grupos = ['Grupo 1', 'Grupo 2']
+      this.primeiroGrupo = grupos[num]
+      this.formDisabled = false
+      if(this.primeiroGrupo == 'Grupo 1') {
+        this.grupo1Wins++
+      } else {
+        this.grupo2Wins++
       }
+    }, 2000)
   }
 
   resetAll() {
