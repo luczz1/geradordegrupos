@@ -90,13 +90,16 @@ export class AlgComponent implements OnInit {
       let num = Math.trunc(Math.random() * 2);
       let grupos = ['Grupo 1', 'Grupo 2']
       this.primeiroGrupo = grupos[num]
-      this.formDisabled = false
       if(this.primeiroGrupo == 'Grupo 1') {
         this.grupo1Wins++
       } else {
         this.grupo2Wins++
       }
     }, 2000)
+    
+    setTimeout(() => {
+      this.formDisabled = false
+    }, 3500)
   }
 
   resetAll() {
