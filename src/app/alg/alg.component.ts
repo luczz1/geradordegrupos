@@ -70,7 +70,6 @@ export class AlgComponent implements OnInit {
       setTimeout(() => {
         this.grupo2.push(this.nomes[this.numeros[2]], this.nomes[this.numeros[3]]);
         this.firstGroupToEat()
-        this.formDisabled = false
       }, 4000)
       } else {
         this.formNomes.get('n1').markAsDirty()
@@ -83,13 +82,13 @@ export class AlgComponent implements OnInit {
   firstGroupToEat() {
     this.primeiroGrupo = ''
     this.loadingRes = true
-    this.formDisabled = true
     setTimeout(() => {
       this.loadingRes = false
       this.vezesGerado++
       let num = Math.trunc(Math.random() * 2);
       let grupos = ['Grupo 1', 'Grupo 2']
       this.primeiroGrupo = grupos[num]
+      this.formDisabled = false
       if(this.primeiroGrupo == 'Grupo 1') {
         this.grupo1Wins++
       } else {
@@ -97,9 +96,6 @@ export class AlgComponent implements OnInit {
       }
     }, 2000)
     
-    setTimeout(() => {
-      this.formDisabled = false
-    }, 3500)
   }
 
   resetAll() {
