@@ -39,6 +39,7 @@ export class AlgComponent implements OnInit {
   ngOnInit(): void {}
 
   randomizeGroups() {
+    this.firstGroupToEat()
     if(this.formNomes.valid) {
       this.formDisabled = true
       this.loading = true
