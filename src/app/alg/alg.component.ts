@@ -81,20 +81,22 @@ export class AlgComponent implements OnInit {
   }
 
   firstGroupToEat() {
-    this.primeiroGrupo = ''
-    this.loadingRes = true
-    setTimeout(() => {
-      this.loadingRes = false
-      this.vezesGerado++
-      let num = Math.trunc(Math.random() * 2);
-      let grupos = ['Grupo 1', 'Grupo 2']
-      this.primeiroGrupo = grupos[num]
-      if(this.primeiroGrupo == 'Grupo 1') {
-        this.grupo1Wins++
-      } else {
-        this.grupo2Wins++
+    if (this.grupo1.length == 2 && this.grupo2.length == 2) {
+       this.primeiroGrupo = ''
+      this.loadingRes = true
+      setTimeout(() => {
+        this.loadingRes = false
+        this.vezesGerado++
+        let num = Math.trunc(Math.random() * 2);
+        let grupos = ['Grupo 1', 'Grupo 2']
+        this.primeiroGrupo = grupos[num]
+        if(this.primeiroGrupo == 'Grupo 1') {
+          this.grupo1Wins++
+        } else {
+          this.grupo2Wins++
+        }
+      }, 2000)
       }
-    }, 2000)
   }
 
   resetAll() {
